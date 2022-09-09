@@ -1,13 +1,4 @@
-/*p = head; // assign head to p
-  while (p->next != NULL) {
-      p = p->next; // traverse the list until p is the last node. The last node always points to NULL.
-  }
-  // if (!list.head.next) {
-  //   list.head.next = Node(value);
-  // } else {
-  //   refNext
-  // }
-  // list.tail = Node(value);
+
 /* .head property, a linkedListNode instance
  .tail property, a linkedListNode instance
  .addToTail() method, takes a value and adds it to the end of the list
@@ -21,39 +12,51 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    var newNode;
-    var refNext;
     if (!list.head) {
       list.head = Node(value);
-    } else { //{head: {value: 4, next: null}}
-      newNode = Node(value);
-      refNext = list.head;
-      while (refNext.next !== null) {
-        refNext = refNext.next;
-      }
-      refNext.next = newNode
+      // assign tail to new head node
+      list.tail = list.head;
+    } else {
+      list.tail.next = Node(value);
+      list.tail = list.tail.next;
     }
-    console.log('list', list)
   };
+  // constant O(1)
 
   list.removeHead = function() {
-    // {head: {value: 4, next: null}, tail: {value: 5, next: null}}
     var popped;
-    // console.log('Node:', node.next);
     if (Object.keys(list).length > 0) {
-      popped = list.head.value;
+      popped = list.head;
       delete list.head;
-      list.head = Object.keys(list)[0];
-      console.log('list after removeHead:', list);
+      list.head = popped.next;
+      popped = popped.value;
     }
     return popped;
   };
+  // constant O(1)
 
+  // {head: {value: 4, next: null}, tail: {value: 5, next: null}}
   list.contains = function(target) {
+    var isContained = false;
+
+    var checkNode = function(currentNode) {
+      if (currentNode.value === target) {
+        isContained = true;
+      }
+      if (!currentNode.next) {
+        return;
+      } else {
+        checkNode(currentNode.next);
+      }
+    };
+    checkNode(list.head);
+
+    return isContained;
   };
 
   return list;
 };
+// O(n^2)
 
 var Node = function(value) {
   // console.log('value :', value);
@@ -67,4 +70,5 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  addToTail: O(1), removeHead: O(1), contains: O(n^2)
  */
