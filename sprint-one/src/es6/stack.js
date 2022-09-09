@@ -5,20 +5,24 @@ class Stack {
     this.storage = {};
   }
 
+  storageLength() {
+    return Object.keys(this.storage).length;
+  }
+
   push(value) {
-    var index = Object.keys(this.storage).length;
+    var index = this.storageLength();
     this.storage[index] = value;
     return this.storage;
   }
 
   pop() {
-    var storageLength = Object.keys(this.storage).length;
-    var popped = this.storage[storageLength - 1];
-    delete this.storage[storageLength - 1];
+    var index = this.storageLength();
+    var popped = this.storage[index - 1];
+    delete this.storage[index - 1];
     return popped;
   }
 
   size() {
-    return Object.keys(this.storage).length;
+    return this.storageLength();
   }
 }
