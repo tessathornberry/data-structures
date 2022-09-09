@@ -25,7 +25,6 @@ class Queue {
 
   dequeue() {
     var firstKey = this.storageKeys()[0];
-    // var firstKey = storageKeys[0];
     var dequeued = this.storage[firstKey];
     delete this.storage[firstKey];
     return dequeued;
