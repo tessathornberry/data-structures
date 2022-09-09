@@ -6,7 +6,7 @@ var Stack = function() {
 
 var stackMethods = {
   push: function(value) {
-    var indexOfStorage; //{0: 'a', 1: 'b', 2: 'c'}
+    var indexOfStorage;
     var storageLength = Object.keys(this.storage).length;
     this.storage[storageLength] = value;
   },
