@@ -8,32 +8,19 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
   _.extend(newTree, treeMethods);
-
-  // your code here
-  newTree.children = []; // newTree {value, children [{}, {}, {}]}
+  newTree.children = [];
   return newTree;
 };
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // create the child object with value key containing value and value childrenkey containing array
-  // if (this.value === undefined) {
-  //   this.value = value;
-  // }
-  //tree = {value: 5, children: [{value: 7, children: []}]}  tree.children[0].addChild(7); tree.children[1].addChild(8);
-  var child = {};
-  child.value = value;
-  child.children = [];
-  console.log('child', child, 'this', this);
-  // set value as target of this node
-  // add child into children array
+  var child = Tree(value);
   this.children.push(child);
 };
+// O(1)
 
 treeMethods.contains = function(target) {
-  // use helper func recursion
-  // returns a boolean
   var isPresent = false;
 
   var checkTree = function(currNode) {
@@ -52,8 +39,8 @@ treeMethods.contains = function(target) {
   return isPresent;
 };
 
-
+//
 
 /*
  * Complexity: What is the time complexity of the above functions?
- */
+ addChild = O(1)    contains = O(n^2)*/
