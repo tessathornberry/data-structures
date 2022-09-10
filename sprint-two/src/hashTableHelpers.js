@@ -8,8 +8,8 @@
 // It will ensure that you don't accidentally try to use up too much space.
 //
 // Usage:
-//   limitedArray.set(3, 'hi');
-//   limitedArray.get(3); // returns 'hi'
+// limitedArray.set(3, 'hi');
+// limitedArray.get(3); // returns 'hi'
 
 var LimitedArray = function(limit) {
   var storage = [];
