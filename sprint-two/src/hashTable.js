@@ -18,7 +18,6 @@ HashTable.prototype.insert = function(k, v) {
       tuple[1] = v;
       found = true;
     }
-
   }
 
   if (!found) {
@@ -63,7 +62,7 @@ HashTable.prototype.remove = function(k) {
 
 
 /* Complexity: What is the time complexity of the above functions?
-Almost always O(1) except when there are collisions in the hash table
+Almost always O(1) except when there are collisions in the hash table, which are O(n)
  */
 
 

@@ -10,18 +10,14 @@
  What is the time complexity of the above functions?
 */
 
-// Instantiate a new graph
-//var graph = new Graph();
 var Graph = function() {
   this.storage = {};
 };
 
-// Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this.storage[node] = [];
 };
 
-// Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
   if (this.storage[node]) {
     return true;
@@ -30,7 +26,6 @@ Graph.prototype.contains = function(node) {
   }
 };
 
-// Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
   var nodeArray = this.storage[node];
   if (this.storage[node].length > 0) {
@@ -42,7 +37,6 @@ Graph.prototype.removeNode = function(node) {
   delete this.storage[node];
 };
 
-// Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
   if (this.storage[fromNode].includes(toNode)) {
     return true;
@@ -51,15 +45,13 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   }
 };
 
-// Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
   this.storage[fromNode].push(toNode);
   this.storage[toNode].push(fromNode);
 };
 
-// Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  var startPos = this.storage[fromNode]; //4: [5]
+  var startPos = this.storage[fromNode];
   var endPos = this.storage[toNode];
   _.each(startPos, function(element, index) {
     if (element === toNode) {
@@ -73,7 +65,6 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
   });
 };
 
-// Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
   for (var key in this.storage) {
     cb(key);

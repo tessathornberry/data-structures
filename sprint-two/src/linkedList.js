@@ -1,11 +1,4 @@
 
-/* .head property, a linkedListNode instance
- .tail property, a linkedListNode instance
- .addToTail() method, takes a value and adds it to the end of the list
- .removeHead() method, removes the first node from the list and returns its value
- .contains() method, returns boolean reflecting whether or not the passed-in value is in the linked list
- What is the time complexity of the above functions?*/
-
 var LinkedList = function() {
   var list = {};
   list.head = null;
@@ -14,14 +7,12 @@ var LinkedList = function() {
   list.addToTail = function(value) {
     if (!list.head) {
       list.head = Node(value);
-      // assign tail to new head node
       list.tail = list.head;
     } else {
       list.tail.next = Node(value);
       list.tail = list.tail.next;
     }
   };
-  // constant O(1)
 
   list.removeHead = function() {
     var popped;
@@ -33,9 +24,7 @@ var LinkedList = function() {
     }
     return popped;
   };
-  // constant O(1)
 
-  // {head: {value: 4, next: null}, tail: {value: 5, next: null}}
   list.contains = function(target) {
     var isContained = false;
 
@@ -56,10 +45,8 @@ var LinkedList = function() {
 
   return list;
 };
-// O(n^2)
 
 var Node = function(value) {
-  // console.log('value :', value);
   var node = {};
 
   node.value = value;

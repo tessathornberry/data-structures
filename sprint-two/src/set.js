@@ -11,7 +11,6 @@ setPrototype.add = function(item) {
   if (typeof item === 'string' && !keysArr.includes(item)) {
     this._storage[item] = item;
   }
-  // console.log(this._storage);
 };
 
 setPrototype.contains = function(item) {
@@ -25,11 +24,5 @@ setPrototype.remove = function(item) {
 
 /*
 * Complexity: What is the time complexity of the above functions?
-add: O(n) contains: O(n) remove: O(1)
+because of the use of includes, add: O(n) contains: O(n) remove: O(1)
 */
-
-// check if item is not already part of the set
-// if (!Object.keys(this._storage).includes(item)) {
-//   // add string to this.storage[item] = item
-//   this._storage[item] = item;
-// }
